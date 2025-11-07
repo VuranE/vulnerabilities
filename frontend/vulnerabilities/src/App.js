@@ -3,8 +3,7 @@ import './App.css';
 import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import SQLPage from './pages/SQLPage/SQLPage';
-import BrokenAccessPage from './pages/BrokenAccessPage/BrokenAccessPage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
@@ -12,8 +11,8 @@ function App() {
       
         <Router>
           <Routes>
-            <Route path="/" element={<SQLPage />} />
-            <Route path="/bac" element={<BrokenAccessPage />} />
+            <Route path="/" element={<HomePage />} />
+            
             
           </Routes>
 
