@@ -1,0 +1,12 @@
+[{
+    "role": "admin",
+    "actions": ["create new user", "delete existing user", "suspend user", "change username", "change user info"]
+},
+{
+    "role": "user",
+    "actions": ["change my username", "change my user info"]
+},
+{
+    "role": "moderator",
+    "actions": ["change username", "change user info"]
+}]
