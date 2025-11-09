@@ -34,18 +34,25 @@ function XSSComponent(){
                                 
     }
 
-    return(<>
-    <h1>OPIS FUNKCIONALNOSTI</h1>
-    <p>Ova sekcija aplikacije omogućava testiranje XSS napada. Napad se može omogućiti ili onemogućiti klikom na checkbox niže.</p>
-    <span>Omogućen XSS napad</span><input type="checkbox"  onClick={() => {setAllowed(!allowed)}}></input>
+    return(<div className="comp">
     
-    <div>Kada je omogućen xss napad, u input field moguće je unijeti script tag čiji će se sadržaj izvršiti pritiskom na gumb 'Pošalji'. Kada je napad onemogućen, unos se sanitira i skripta se ne izvodi. Za potrebe testiranja postavljen je testni cookie.</div>
-
-    <div> Bok, kako se zoveš?  <button onClick={() => { handleName()}}>Pošalji</button></div>
+    <div className="opis">Ova sekcija aplikacije omogućava testiranje XSS napada. Napad se može omogućiti ili onemogućiti klikom na checkbox niže.
+    Kada je omogućen xss napad, u input field moguće je unijeti script tag čiji će se sadržaj izvršiti pritiskom na gumb 'Pošalji'. Kada je napad onemogućen, unos se sanitizira i skripta se ne izvodi. Za potrebe testiranja, budući da nije implemenitran login, hardkodiran je testni cookie kojem se može pristupiti putem document.cookie</div>
+    <div className="allow">
+        <strong>Omogućen XSS napad</strong><input type="checkbox"  onClick={() => {setAllowed(!allowed)}}></input>
+    
+    </div>
+    
+    <div className="xssInput"> Bok, kako se zoveš? <input
+                type="text"
+                value={name}
+                onChange={handleInputChange}
+                style={{ marginLeft: "10px" }}
+              /> <button onClick={() => { handleName()}}>Pošalji</button></div>
     
     
     <div id="output"> </div>
     
-    </>);
+    </div>);
 }
 export default XSSComponent;

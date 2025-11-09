@@ -2,14 +2,14 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import database from "../../data/database.json";
 import rolesData from "../../data/actionPermissions.json";
-import { useLocation } from "react-router-dom";
+import BackButton from "../../components/BackButton/BackButton";
 
 function RolePage() {
 
-    const location = useLocation();
+    
 
   const { role } = useParams(); 
-  const roleInfo = rolesData.find(r => r.role === role);
+  
   const [idToDelete, setIdToDelete] = useState('');
   const [users, setUsers] = useState(database);
   const [newUsername, setNewUsername] = useState('');
@@ -23,15 +23,17 @@ function RolePage() {
   const curUser = users.find(u => u.id === Number(storedUser.id));
   if(!allowed){
     if(curUser.role !== role){
-     return <h2> Nemate ovlasti za pristupiti ovoj stranici.</h2>
+     return <> <h2> Nemate ovlasti za pristupiti ovoj stranici.</h2> <BackButton /></>
   }
+  } else {
+    if(role !== "user" && role !== "admin"){
+      return <> <h2> Ne postoji ta uloga.</h2> <BackButton /></>
+    }
   }
   
 
 
-  if (!roleInfo) {
-    return <h2>Uloga "{role}" ne postoji.</h2>;
-  }
+ 
 
   
   function handleDelete() {
@@ -87,22 +89,22 @@ function RolePage() {
     }
 
   return (
-    <>
+    <div className="comp">
         {role === "admin" && (
         <>
-          <div style={{ marginBottom: "20px" }}>
+          <div>
             <label>
               ID korisnika za obrisati:
               <input
                 type="text"
                 value={idToDelete}
                 onChange={handleInputChange}
-                style={{ marginLeft: "10px" }}
+                
               />
             </label>
             <button
               onClick={handleDelete}
-              style={{ marginLeft: "10px", cursor: "pointer" }}
+              
             >
               Obriši korisnika
             </button>
@@ -138,29 +140,30 @@ function RolePage() {
       )}
 
       {role === "user" && (<>
-      <h1>Detalji računa</h1>
-      <p><strong>ID:</strong> {curUser.id}</p>
-      <p><strong>Ime:</strong> {curUser.firstName} {curUser.lastName}</p>
-      <p><strong>Email:</strong> {curUser.email}</p>
-      <p><strong>Username:</strong> {curUser.username}</p>
-      <label>
-              Novi username
+      <h1>Promijeni username</h1>
+      
+      <div><strong>Ime:</strong> {curUser.firstName} {curUser.lastName}</div>
+      <div><strong>Username:</strong> {curUser.username}</div>
+      <div className="xssInput"><label>
+              Novi username 
               <input
                 type="text"
                 value={newUsername}
                 onChange={handleNameChange}
-                style={{ marginLeft: "10px" }}
+               
               />
-            </label>
+            </label> 
             <button
               onClick={handleUsernameChange}
-              style={{ marginLeft: "10px", cursor: "pointer" }}
+              
             >
               Promijeni username
             </button>
-
+        </div>
       </>)}
-    </>
+
+      <BackButton />
+    </div>
   );
 }
 
