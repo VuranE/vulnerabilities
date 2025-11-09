@@ -41,7 +41,7 @@ function XSSComponent(){
     
     <div>Kada je omogućen xss napad, u input field moguće je unijeti script tag čiji će se sadržaj izvršiti pritiskom na gumb 'Pošalji'. Kada je napad onemogućen, unos se sanitira i skripta se ne izvodi. Za potrebe testiranja postavljen je testni cookie.</div>
 
-    <div> Bok, kako se zoveš? <input type="text"  onChange={handleInputChange}></input> <button onClick={() => { handleName()}}>Pošalji</button></div>
+    <div> Bok, kako se zoveš?  <button onClick={() => { handleName()}}>Pošalji</button></div>
     
     
     <div id="output"> </div>

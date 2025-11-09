@@ -16,8 +16,12 @@ function BrokenAccessComponent(){
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }, []);
     
+    useEffect(() => {
+    
+    localStorage.setItem("brokenAccessAllowed", JSON.stringify(allowed));
+  }, [allowed]);
 
-// Spremaš u localStorage
+
 
 
     return(<>
@@ -28,10 +32,10 @@ function BrokenAccessComponent(){
     </div>
     <span>Omogućen Broken Access napad</span><input type="checkbox"  onClick={() => {setAllowed(!allowed)}}></input>
     {allowed && (<><Link to="/account-details/123" >My account details</Link>
-    <Link to="/user/actions" >My role actions</Link></>)}
+    <Link to="/user/actions" state={{ allowed: true }} >My role actions</Link></>)}
 
 
-    {!allowed && (<Link to="/account-details/a8f3c2b1e9">My account details</Link>)}
+    {!allowed && (<><Link to="/account-details/a8f3c2b1e9">My account details</Link> <Link to="/user/actions" state={{ allowed: false }} >My role actions</Link></>)}
 
 
 
