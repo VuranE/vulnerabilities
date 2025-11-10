@@ -1,6 +1,15 @@
 # vulnerabilities
-Drugi projekt iz WEB2
+**Drugi projekt iz kolegija Napredni razvoj programske potpore za web**
 
+Zadatak je izraditi aplikaciju koja je ranjiva na Crosss-site scripting i Broken Access Control. 
+
+# Korištenje aplikacije
+Aplikacija je postavljena na Render. Pristupiti joj je moguće putem linka: https://vulnerabilities-72d4.onrender.com/
+
+# Tehnologije
++ **Frontend** React.js
+
+# Tekst zadatka:
 Potrebno je izraditi web-aplikaciju koja će omogućiti potencijalnom napadaču korištenje dvije različite tehnike sigurnosnih napada, odnosno dvije ranjivosti web-aplikacija, iz dolje navedenih kategorija.
 
 Za svaku je potrebno implementirati:
